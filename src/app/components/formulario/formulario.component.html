@@ -1,1 +1,45 @@
-<p>formulario works!</p>
+<div class="col-6 offset-3">
+  <h1>Agregar nuevo Post</h1>
+  <form [formGroup]="formNewPost" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">Titulo</label>
+      <input type="text" class="form-control" formControlName="titulo" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Texto</label>
+      <textarea
+        name="texto"
+        cols="30"
+        rows="10"
+        maxlength="160"
+        class="form-control"
+        formControlName="texto"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Autor</label>
+      <input type="text" class="form-control" formControlName="autor" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Imagen</label>
+      <input type="text" class="form-control" formControlName="imagen" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Fecha</label>
+      <input type="date" class="form-control" formControlName="fecha" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Categoria</label>
+      <select>
+        <option value="none" selected disabled hidden>Elige un tema</option>
+        <option value="Apple">Apple</option>
+        <option value="Developer">Developer</option>
+        <option value="Design">Design</option>
+        <option value="Google">Google</option>
+        <option value="Games">Games</option>
+        <option value="Microsoft">Microsoft</option>
+      </select>
+    </div>
+    <input type="submit" value="Enviar" class="btn btn-info" />
+  </form>
+</div>
