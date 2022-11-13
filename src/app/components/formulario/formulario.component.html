@@ -2,11 +2,11 @@
   <h1>Agregar nuevo Post</h1>
   <form [formGroup]="formNewPost" (ngSubmit)="onSubmit()">
     <div class="mb-3">
-      <label class="form-label">Titulo</label>
+      <label class="form-label">Titulo*</label>
       <input type="text" class="form-control" formControlName="titulo" />
     </div>
     <div class="mb-3">
-      <label class="form-label">Texto</label>
+      <label class="form-label">Texto*</label>
       <textarea
         name="texto"
         cols="30"
@@ -17,7 +17,7 @@
       ></textarea>
     </div>
     <div class="mb-3">
-      <label class="form-label">Autor</label>
+      <label class="form-label">Autor*</label>
       <input type="text" class="form-control" formControlName="autor" />
     </div>
     <div class="mb-3">
@@ -25,11 +25,11 @@
       <input type="text" class="form-control" formControlName="imagen" />
     </div>
     <div class="mb-3">
-      <label class="form-label">Fecha</label>
+      <label class="form-label">Fecha*</label>
       <input type="date" class="form-control" formControlName="fecha" />
     </div>
     <div class="mb-3">
-      <label class="form-label">Categoria</label>
+      <label class="form-label">Categoria*</label>
       <select>
         <option value="none" selected disabled hidden>Elige un tema</option>
         <option value="Apple">Apple</option>
@@ -40,6 +40,6 @@
         <option value="Microsoft">Microsoft</option>
       </select>
     </div>
-    <input type="submit" value="Enviar" class="btn btn-info" />
+    <input type="submit" value="Enviar" class="btn btn-block btn-info" />
   </form>
 </div>

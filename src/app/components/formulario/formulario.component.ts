@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
   selector: 'app-formulario',
@@ -9,14 +10,14 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class FormularioComponent implements OnInit {
   formNewPost: FormGroup;
 
-  constructor() {
+  constructor(private postsService: PostsService) {
     this.formNewPost = new FormGroup({
-      titulo: new FormControl(''),
-      texto: new FormControl(''),
-      autor: new FormControl(''),
+      titulo: new FormControl('', [Validators.required]),
+      texto: new FormControl('', [Validators.required]),
+      autor: new FormControl('', [Validators.required]),
       imagen: new FormControl(''),
-      fecha: new FormControl(''),
-      categoria: new FormControl(''),
+      fecha: new FormControl('', [Validators.required]),
+      categoria: new FormControl('', [Validators.required]),
     });
   }
 
@@ -24,5 +25,6 @@ export class FormularioComponent implements OnInit {
 
   onSubmit() {
     console.log(this.formNewPost.value);
+    this.postsService.insert(this.formNewPost.value);
   }
 }
