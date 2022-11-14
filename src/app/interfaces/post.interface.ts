@@ -1,8 +1,9 @@
 export interface Post {
+  id?: number;
   titulo: string;
   texto: string;
   autor: string;
-  image: string;
+  imagen: string;
   fecha: Date;
   categoria: string;
 }

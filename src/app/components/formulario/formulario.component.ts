@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PostsService } from 'src/app/services/posts.service';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-formulario',
@@ -8,10 +8,12 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./formulario.component.css'],
 })
 export class FormularioComponent implements OnInit {
-  formNewPost: FormGroup;
+  formulario: FormGroup;
+  arrCategorias: string[];
 
-  constructor(private postsService: PostsService) {
-    this.formNewPost = new FormGroup({
+  constructor(private postsService: PostService) {
+    this.arrCategorias = this.postsService.getAllCategorias();
+    this.formulario = new FormGroup({
       titulo: new FormControl('', [Validators.required]),
       texto: new FormControl('', [Validators.required]),
       autor: new FormControl('', [Validators.required]),
@@ -23,8 +25,10 @@ export class FormularioComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit() {
-    console.log(this.formNewPost.value);
-    this.postsService.insert(this.formNewPost.value);
+  onSubmit(formulario: any) {
+    let newPost = formulario.value;
+    newPost.id = this.postsService.getAll().length;
+    formulario.reset();
+    return this.postsService.createPost(newPost);
   }
 }

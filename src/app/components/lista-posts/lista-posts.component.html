@@ -1,10 +1,24 @@
 <div class="blog">
-  <div class="post" *ngFor="let Post of Posts">
-    <h2>{{ Post.titulo }}</h2>
-    <p>{{ Post.categoria }}</p>
-    <p>{{ Post.texto }}</p>
-    <img src="Post.imagen" alt="" />
-    <h3>{{ Post.autor }}</h3>
-    <p>{{ Post.fecha }}</p>
+  <h2>BLOG</h2>
+  <select (change)="onChange($event)">
+    <option selected disabled>Filtrar por categoria</option>
+    <option value="todas">Todas</option>
+    <option *ngFor="let categoria of arrCategorias" [value]="categoria">
+      {{ categoria }}
+    </option>
+  </select>
+  <div class="blog">
+    <article *ngFor="let post of arrPosts" [routerLink]="['/posts', post.id]">
+      <div class="imagen">
+        <img [src]="post.imagen" alt="" />
+      </div>
+      <div>
+        <p>{{ post.autor }}</p>
+        <h3>{{ post.titulo }}</h3>
+        <p>Articulo: {{ post.texto }}</p>
+        <p class="fecha">{{ post.fecha | date: "MMM d, y" }}</p>
+        <h3>{{ post.categoria }}</h3>
+      </div>
+    </article>
   </div>
 </div>

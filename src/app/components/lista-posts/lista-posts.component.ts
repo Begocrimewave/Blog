@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/interfaces/post.interface';
-import { PostsService } from 'src/app/services/posts.service';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-lista-posts',
@@ -8,13 +8,29 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./lista-posts.component.css'],
 })
 export class ListaPostsComponent implements OnInit {
-  Posts!: Post[];
-
-  constructor(private postsService: PostsService) {}
+  arrPosts: Post[];
+  arrCategorias: string[];
+  constructor(private postsService: PostService) {
+    this.arrPosts = [];
+    this.arrCategorias = [];
+  }
 
   ngOnInit(): void {
-    this.postsService.getAll().then((arrPosts) => {
-      this.Posts = arrPosts;
-    });
+    if (JSON.parse(localStorage.getItem('blog')!)) {
+      this.arrPosts = JSON.parse(localStorage.getItem('blog')!);
+    } else {
+      this.arrPosts = this.postsService.getAll();
+    }
+    this.arrCategorias = this.postsService.getAllCategorias();
+  }
+
+  onChange($event: any) {
+    if ($event.target.value === 'all') {
+      return (this.arrPosts = this.postsService.getAll());
+    } else {
+      return (this.arrPosts = this.postsService.getByCategorias(
+        $event.target.value
+      ));
+    }
   }
 }

@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: rgb(26, 27, 31);
+  color: aliceblue;
+}
+
+.btn {
+  border: 3px solid black;
+  background-color: #d9afd9;
+  background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
+}

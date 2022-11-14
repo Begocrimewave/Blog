@@ -1,6 +1,6 @@
 <div class="col-6 offset-3">
   <h1>Agregar nuevo Post</h1>
-  <form [formGroup]="formNewPost" (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit(formulario)">
     <div class="mb-3">
       <label class="form-label">Titulo*</label>
       <input type="text" class="form-control" formControlName="titulo" />
@@ -21,16 +21,19 @@
       <input type="text" class="form-control" formControlName="autor" />
     </div>
     <div class="mb-3">
-      <label class="form-label">Imagen</label>
-      <input type="text" class="form-control" formControlName="imagen" />
+      <label class="form-label">imagenn</label>
+      <input type="text" class="form-control" formControlName="imagenn" />
     </div>
     <div class="mb-3">
       <label class="form-label">Fecha*</label>
       <input type="date" class="form-control" formControlName="fecha" />
     </div>
     <div class="mb-3">
-      <label class="form-label">Categoria*</label>
-      <select>
+      <label class="form-label" formControlName="categoria">Categoria*</label>
+      <select *ngFor="let categoria of arrCategorias" [value]="categoria">
+        {{
+          categoria
+        }}>
         <option value="none" selected disabled hidden>Elige un tema</option>
         <option value="Apple">Apple</option>
         <option value="Developer">Developer</option>
