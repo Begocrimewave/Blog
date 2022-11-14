@@ -7,10 +7,10 @@ import { PostComponent } from './components/post/post.component';
 
 const routes: Routes = [
   { path: '', component: ListaPostsComponent },
-  { path: '**', redirectTo: 'posts' },
-  { path: 'blog/new', component: FormularioComponent },
-  { path: 'posts/:postId', component: PostComponent },
-  { path: 'posts', component: ListaPostsComponent },
+  { path: '**', redirectTo: 'blog' },
+  { path: 'formulario', component: FormularioComponent },
+  { path: 'post', component: PostComponent },
+  { path: 'blog', component: ListaPostsComponent },
 ];
 
 @NgModule({

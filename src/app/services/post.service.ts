@@ -103,5 +103,9 @@ export class PostService {
     }
     localStorage.setItem('blog', JSON.stringify(this.arrPosts));
     return (this.arrPosts = JSON.parse(localStorage.getItem('blog')!));
+  getAll(): Promise<Post[]> {
+    return new Promise((resolve, reject) => {
+      resolve(this.arrPosts);
+    });
   }
 }

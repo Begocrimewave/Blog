@@ -27,7 +27,7 @@ export class FormularioComponent implements OnInit {
 
   onSubmit(formulario: any) {
     let newPost = formulario.value;
-    newPost.id = this.postsService.getAll().length;
+    newPost.id = this.postsService.getAll();
     formulario.reset();
     return this.postsService.createPost(newPost);
   }

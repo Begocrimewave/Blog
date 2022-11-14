@@ -23,7 +23,7 @@ export class ListaPostsComponent implements OnInit {
     }
     this.arrCategorias = this.postsService.getAllCategorias();
   }
-
+  ngOnInit(): void {}
   onChange($event: any) {
     if ($event.target.value === 'all') {
       return (this.arrPosts = this.postsService.getAll());
